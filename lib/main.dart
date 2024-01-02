@@ -1,24 +1,45 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Sayfa());
+  runApp(Deneme());
 }
 
-class Sayfa extends StatefulWidget{
-  Sayfa({super.key});
+
+class Deneme extends StatefulWidget {
+  const Deneme({super.key});
 
   @override
-  State<Sayfa> createState() => _SayfaState();
+  State<Deneme> createState() => _DenemeState();
+
+
 }
 
-abstract class _SayfaState extends State<Sayfa>{
-  late int yas;
-  TextEditingController _txt1 = TextEditingController();
+class _DenemeState extends State<Deneme> {
+  int value = 0;
   @override
-  void initState(){
-    print("initstate çalıştı");
-    yas =18;
+  Widget build(BuildContext context) {
+    return  MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(value.toString()),
+              ElevatedButton(
+                  onPressed: (){
+                    setState(() {
+                      value=value+1;
+                    });
+                    print(value);
+                  },
+                  child: const Text("tıkla"),
+              ),
+            ],
+          ),
 
-    super.initState();
+        ),
+      ),
+    );
   }
 }
